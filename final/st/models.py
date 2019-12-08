@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.urls import reverse
 
 # Create your models here.
 class st_model(models.Model):
@@ -120,3 +121,8 @@ class st_model(models.Model):
 
     runs_from = models.BooleanField()
 
+    def __str__(self):
+        return self.unique_squirrel_id
+    
+    def get_absolute_url(self):
+        return reverse('index')
