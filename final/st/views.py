@@ -1,19 +1,24 @@
 from django.shortcuts import render,get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from .models import st_model
 from .forms import st_form
 from django.db.models import Count
+from django.contrib import messages
 
 
 def showmap(request):
     sightings = st_model.objects.all()
     context = {
-        'sightings': sightings,
+            'sightings': sightings
     }
     return render(request, 'st/map.html', context)
 
 def sightings(request):
-    return True
+    squirrels = st_model.objects.all()
+    context = {
+            'squirrels':squirrles
+    }
+    return render(request,'st/sightings',context)
 
 def showstats(request):
     count_squirrles = st_models.objects.value('Unique Squirrel ID').annotate(s_count = Count('Unique Squirrel ID')
@@ -36,7 +41,8 @@ def showstats(request):
         'count_running':count_running,
         'count_eating':count_eating,
         }
-        
+    return render(request,'st/sightings/stats',context)
+
 def add(request):
     return True
 
