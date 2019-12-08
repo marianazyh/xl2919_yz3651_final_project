@@ -22,6 +22,7 @@ class Command(BaseCommand):
         with open(options['path']) as sd:
             data = csv.DictReader(sd)
             next(data)
+            st_model.objects.all().delete()
             for row in data:
                 
                 sm = st_model()
