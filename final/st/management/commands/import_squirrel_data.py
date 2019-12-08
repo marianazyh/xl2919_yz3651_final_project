@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self,*args, **options): 
         with open(options['path']) as sd:
-            data = csv.DictReaderi(sd)
+            data = csv.DictReader(sd)
             next(data)
             for row in data:
                 
