@@ -26,8 +26,8 @@ class Command(BaseCommand):
                 
                 sm = st_model()
                 
-                sm.latitude_coordinate=row['X']
-                sm.longitude_coordinate=row['Y']
+                sm.latitude_coordinate=row['Y']
+                sm.longitude_coordinate=row['X']
                 sm.unique_squirrel_id=row['Unique Squirrel ID']
                 sm.shift=row['Shift']
                 sm.date=row['Date']
