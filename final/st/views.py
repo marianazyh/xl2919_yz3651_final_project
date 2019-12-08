@@ -16,21 +16,15 @@ def sightings(request):
 
 def showstats(request):
     squirrel = st_model.objects.all()
-    count_am = squirrel.values('shift').annotate(am_count = Count('shift')).filter(shift='AM')
-    count_pm = squirrel.values('shift').annotate(am_count = Count('shift')).filter(shift='PM')
-    count_adult = squirrel.values('age').annotate(adult_count = Count('age')).filter(age='Adult')
-    count_juvenile = squirrel.values('age').annotate(juvenile_count = Count('age')).filter(age='Juvenile')
-    count_above = squirrel.values('location').annotate(above_count = Count('location')).filter(location='Above Ground')
-    count_plane = squirrel.values('location').annotate(plane_count = Count('location')).filter(location='Ground Plane')
+    count_shift = squirrel.values('shift').order_by('shift').annotate(shift_count = Count('shift'))
+    count_age = squirrel.values('age').order_by('age').annotate(adult_count = Count('age'))
+    count_location = squirrel.values('location').order_by('location').annotate(above_count = Count('location'))
     count_running = squirrel.values('running').annotate(count_running=Count('running')).filter(running="True")
-    count_eating = squirrel.values('eating').annotate(count_eating=Count('eating')).filter(eating="True")
-    context = {
-        'count_am':count_am,
-        'count_pm':count_pm,
-        'count_adult':count_adult,
-        'count_juvenile':count_juvenile,
-        'count_above':count_above,
-        'above_plane':count_plane,
+    count_eating = squirrel.values('eating')..annotate(count_eating=Count('eating')).filter(eating="True")
+    context = {i
+        'count_shift':count_shift,
+        'count_age':count_age,
+        'counte_location':count_location,
         'count_running':count_running,
         'count_eating':count_eating,
         }
