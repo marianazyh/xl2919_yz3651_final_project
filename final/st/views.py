@@ -16,7 +16,7 @@ def showmap(request):
 def sightings(request):
     squirrels = st_model.objects.all()
     context = {
-            'squirrels':squirrles
+            'squirrels':squirrels
     }
     return render(request,'st/sightings',context)
 
