@@ -81,7 +81,7 @@ class st_model(models.Model):
             blank=True,
             ) 
 
-    specific_location = CharField(
+    specific_location = models. CharField(
             max_length=200,
             help_text=('Anything about the sighting location you would like to specify in 200 characters or less.'),
             blank=True,
@@ -97,7 +97,7 @@ class st_model(models.Model):
 
     foraging = models.BooleanField()
 
-    other_activities = CharField(
+    other_activities = models.CharField(
             max_length=200,
             help_text=("Anything about the squirrel's activities you would like to specify in 200 characters or less."),
             blank=True,
