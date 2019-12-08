@@ -16,7 +16,6 @@ def sightings(request):
 
 def showstats(request):
     squirrel = st_model.objects.all()
-    count_squirrles = squirrel.values('unique_squirrel_id').annotate(s_count = Count('unique_squirrel_id'))
     count_am = squirrel.values('shift').annotate(am_count = Count('shift')).filter(shift='AM')
     count_pm = squirrel.values('shift').annotate(am_count = Count('shift')).filter(shift='PM')
     count_adult = squirrel.values('age').annotate(adult_count = Count('age')).filter(age='Adult')
@@ -26,7 +25,6 @@ def showstats(request):
     count_running = squirrel.values('running').annotate(count_running=Count('running')).filter(running="True")
     count_eating = squirrel.values('eating').annotate(count_eating=Count('eating')).filter(eating="True")
     context = {
-        'count_squirrles':count_squirrles,
         'count_am':count_am,
         'count_pm':count_pm,
         'count_adult':count_adult,
