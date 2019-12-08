@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 sm.tail_twitches=verify(row['Tail twitches'])
                 sm.approaches=verify(row['Approaches'])
                 sm.indifferent=verify(row['Indifferent'])
-                sm.runs_from=verify(['Runs from'])
+                sm.runs_from=verify(row['Runs from'])
                 
                 sm.save()
 
