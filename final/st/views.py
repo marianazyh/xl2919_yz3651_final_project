@@ -6,12 +6,12 @@ from django.db.models import Count
 from django.contrib import messages
 
 
-def showmap(request):
-    sightings = st_model.objects.all()
-    context = {
-            'sightings': sightings
-    }
-    return render(request, 'st/map.html', context)
+#def showmap(request):
+#    sightings = st_model.objects.all()
+#    context = {
+#            'sightings': sightings
+#    }
+#    return render(request, 'st/map.html', context)
 
 def sightings(request):
     squirrels = st_model.objects.all()
