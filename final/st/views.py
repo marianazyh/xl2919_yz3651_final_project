@@ -16,13 +16,13 @@ def sightings(request):
 
 def showstats(request):
     squirrel = st_model.objects.all()
-    count_squirrles = squirrel.value('Unique Squirrel ID').annotate(s_count = Count('Unique Squirrel ID'))
-    count_am = squirrel.value('Shift').annotate(am_count = Count('AM'))
-    count_pm = squirrel.value('Shift').annotate(am_count = Count('PM'))
-    count_adult = squirrel.value('Age').annotate(adult_count = Count('Adult'))
-    count_juvenile = squirrel.value('Age').annotate(juvenile_count = Count('Juvenile'))
-    count_above = squirrel.value('Location').annotate(above_count = Count('Above Ground'))
-    count_plane = squirrel.value('Location').annotate(plane_count = Count('Ground Plane'))
+    count_squirrles = squirrel.values('Unique Squirrel ID').annotate(s_count = Count('Unique Squirrel ID'))
+    count_am = squirrel.values('Shift').annotate(am_count = Count('AM'))
+    count_pm = squirrel.values('Shift').annotate(am_count = Count('PM'))
+    count_adult = squirrel.values('Age').annotate(adult_count = Count('Adult'))
+    count_juvenile = squirrel.values('Age').annotate(juvenile_count = Count('Juvenile'))
+    count_above = squirrel.values('Location').annotate(above_count = Count('Above Ground'))
+    count_plane = squirrel.values('Location').annotate(plane_count = Count('Ground Plane'))
     count_running = squirrel.values('Running').annotate(count_running=Count('Running')).filter(Running="True")
     count_eating = squirrel.values('Running').annotate(count_eating=Count('Eating')).filter(Eating="True")
     context = {
