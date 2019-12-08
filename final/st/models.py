@@ -14,6 +14,7 @@ class st_model(models.Model):
 
     unique_squirrel_id = models.CharField(
             max_length=30,
+            help_text=('ID Format: Hectare-Shift-MMDD-Hectare Squirrel Number'),
             )
 
 
@@ -80,6 +81,12 @@ class st_model(models.Model):
             blank=True,
             ) 
 
+    specific_location = CharField(
+            max_length=200,
+            help_text=('Anything about the sighting location you would like to specify in 200 characters or less.'),
+            blank=True,
+            )
+
     running = models.BooleanField()
 
     chasing = models.BooleanField()
@@ -89,6 +96,12 @@ class st_model(models.Model):
     eating = models.BooleanField()
 
     foraging = models.BooleanField()
+
+    other_activities = CharField(
+            max_length=200,
+            help_text=("Anything about the squirrel's activities you would like to specify in 200 characters or less."),
+            blank=True,
+            )
 
     kuks = models.BooleanField()
 
