@@ -18,6 +18,7 @@ from django.urls import include, path
 from django.conf.urls import url, include
 
 urlpatterns = [
+    path('map/', include('map.urls')),
     path('sightings/',include('st.urls')),
     path('admin/', admin.site.urls),
 
