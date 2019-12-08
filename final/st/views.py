@@ -15,15 +15,16 @@ def sightings(request):
     return render(request,'st/sightings',context)
 
 def showstats(request):
-    count_squirrles = st_model.objects.value('Unique Squirrel ID').annotate(s_count = Count('Unique Squirrel ID'))
-    count_am = st_model.objects.value('Shift').annotate(am_count = Count('AM'))
-    count_pm = st_model.objects.value('Shift').annotate(am_count = Count('PM'))
-    count_adult = st_model.objects.value('Age').annotate(adult_count = Count('Adult'))
-    count_juvenile = st_model.objects.value('Age').annotate(juvenile_count = Count('Juvenile'))
-    count_above = st_model.objects.value('Location').annotate(above_count = Count('Above Ground'))
-    count_plane = st_model.objects.value('Location').annotate(plane_count = Count('Ground Plane'))
-    count_running = st_model.objects.filter(running=True).Count()
-    count_eating = st_model.objects.filter(eating= True).Count()
+    squirrel = st_model.objects.all()
+    count_squirrles = squirrel.value('Unique Squirrel ID').annotate(s_count = Count('Unique Squirrel ID'))
+    count_am = squirrel.value('Shift').annotate(am_count = Count('AM'))
+    count_pm = squirrel.value('Shift').annotate(am_count = Count('PM'))
+    count_adult = squirrel.value('Age').annotate(adult_count = Count('Adult'))
+    count_juvenile = squirrel.value('Age').annotate(juvenile_count = Count('Juvenile'))
+    count_above = squirrel.value('Location').annotate(above_count = Count('Above Ground'))
+    count_plane = squirrel.value('Location').annotate(plane_count = Count('Ground Plane'))
+    count_running = squirrel.values('Running').annotate(count_running=Count('Running')).filter(Running="True")
+    count_eating = squirrel.values('Running').annotate(count_eating=Count('Eating')).filter(Eating="True")
     context = {
         'count_squirrles':count_squirrles,
         'count_am':count_am,
