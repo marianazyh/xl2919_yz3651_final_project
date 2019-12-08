@@ -31,8 +31,9 @@ class st_model(models.Model):
         choices=shift_choices,
         )   
 
-    date = models.DateField(
-        help_text=_('MMDDYYYY'),
+    date = models.CharField(
+            max_length=8,
+            help_text=_('MMDDYYYY'),
         )
 
     Adult = 'Adult'

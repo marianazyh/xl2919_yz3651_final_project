@@ -9,6 +9,16 @@ class Command(BaseCommand):
         parser.add_argument('path', type=str)
 
     def handle(self,*args, **options): 
+
+        def verify(key):
+            if key.lower() == 'true':
+                return True
+            elif key.lower() == 'false':
+                return False
+            else:
+                return 'N/A'
+
+
         with open(options['path']) as sd:
             data = csv.DictReader(sd)
             next(data)
@@ -25,20 +35,20 @@ class Command(BaseCommand):
                 sm.primary_fur_color=row['Primary Fur Color']
                 sm.location=row['Location']
                 sm.specific_location=row['Specific Location']
-                sm.running=row['Running']
-                sm.chasing=row['Chasing']
-                sm.climbing=row['Climbing']
-                sm.eating=row['Eating']
-                sm.foraging=row['Foraging']
+                sm.running=verify(row['Running'])
+                sm.chasing=verify(row['Chasing'])
+                sm.climbing=verify(row['Climbing'])
+                sm.eating=verify(row['Eating'])
+                sm.foraging=verify(row['Foraging'])
                 sm.other_activities=row['Other Activities']
-                sm.kuks=row['Kuks']
-                sm.quaas=row['Quaas']
-                sm.moans=row['Moans']
-                sm.tail_flags=row['Tail flags']
-                sm.tail_twitches=row['Tail twitches']
-                sm.approaches=row['Approaches']
-                sm.indifferent=row['Indifferent']
-                sm.runs_from=['Runs from']
+                sm.kuks=verify(row['Kuks'])
+                sm.quaas=verify(row['Quaas'])
+                sm.moans=verify(row['Moans'])
+                sm.tail_flags=verify(row['Tail flags'])
+                sm.tail_twitches=verify(row['Tail twitches'])
+                sm.approaches=verify(row['Approaches'])
+                sm.indifferent=verify(row['Indifferent'])
+                sm.runs_from=verify(['Runs from'])
                 
                 sm.save()
 
