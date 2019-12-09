@@ -20,34 +20,37 @@ class Command(BaseCommand):
 
 
         with open(options['path']) as sd:
-            data = csv.DictReader(sd)
-            next(data)
+            data = csv.reader(sd,delimiter=',')
+            next(data,None)
             st_model.objects.all().delete()
             for row in data: 
+                if st_model.objects.filter(unique_squirrel_id=row[2]).exists():
+                    continue
+
                 sm, created = st_model.objects.get_or_create(
-                                latitude_coordinate=row['Y'],
-                                longitude_coordinate=row['X'],
-                                unique_squirrel_id=row['Unique Squirrel ID'],
-                                shift=row['Shift'],
-                                date=row['Date'],
-                                age=row['Age'],
-                                primary_fur_color=row['Primary Fur Color'],
-                                location=row['Location'],
-                                specific_location=row['Specific Location'],
-                                running=verify(row['Running']),
-                                chasing=verify(row['Chasing']),
-                                climbing=verify(row['Climbing']),
-                                eating=verify(row['Eating']),
-                                foraging=verify(row['Foraging']),
-                                other_activities=row['Other Activities'],
-                                kuks=verify(row['Kuks']),
-                                quaas=verify(row['Quaas']),
-                                moans=verify(row['Moans']),
-                                tail_flags=verify(row['Tail flags']),
-                                tail_twitches=verify(row['Tail twitches']),
-                                approaches=verify(row['Approaches']),
-                                indifferent=verify(row['Indifferent']),
-                                runs_from=verify(row['Runs from']),
+                                latitude_coordinate=row[1],
+                                longitude_coordinate=row[0],
+                                unique_squirrel_id=row[2],
+                                shift=row[4],
+                                date=row[5],
+                                age=row[7],
+                                primary_fur_color=row[8],
+                                location=row[12],
+                                specific_location=row[14],
+                                running=verify(row[15]),
+                                chasing=verify(row[16]),
+                                climbing=verify(row[17]),
+                                eating=verify(row[18]),
+                                foraging=verify(row[19]),
+                                other_activities=row[20],
+                                kuks=verify(row[21]),
+                                quaas=verify(row[22]),
+                                moans=verify(row[23]),
+                                tail_flags=verify(row[24]),
+                                tail_twitches=verify(row[25]),
+                                approaches=verify(row[26]),
+                                indifferent=verify(row[27]),
+                                runs_from=verify(row[28]),
                                 )
                 if created:
                     sm.save()
