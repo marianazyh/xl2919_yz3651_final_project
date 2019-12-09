@@ -13,11 +13,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         model = st_model
         meta = model._meta
-        fields = [i for i in meta.fields]
+        fields = [f.name for f in meta.fields]
 
         with open(options['path'], 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(fields)
             for obj in model.objects.all():
-                for f in meta.fields:
-                    writer.writerow(getattr(obj, f.name))
+                writer.writerow([getattr(obj, att) for att in fields])
