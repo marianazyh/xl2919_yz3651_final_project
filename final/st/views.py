@@ -65,7 +65,7 @@ def edit(request, unique_squirrel_id):
     else:
         form = st_form(instance = original)
 
-    context{
+    context = {
             'form': form,
             }
     return render(request, 'st/edit.html',context)
