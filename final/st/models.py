@@ -13,7 +13,7 @@ class st_model(models.Model):
             max_length=20,
             )
 
-    unique_squirrel_ID = models.CharField(
+    unique_squirrel_id = models.CharField(
             max_length=30,
             help_text=('(ID Format: Hectare-Shift-MMDD-Hectare Squirrel Number)'),
             )
@@ -34,7 +34,7 @@ class st_model(models.Model):
 
     date = models.CharField(
             max_length=8,
-            help_text=_('Format: MMDDYYYY'),
+            help_text=_('(Format: MMDDYYYY)'),
         )
 
     Adult = 'Adult'
