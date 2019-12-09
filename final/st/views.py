@@ -41,35 +41,29 @@ def add(request):
         form = st_form(request.POST)
         if form.is_valid():
             form.save()
-            context1 = {
-                    'squirrels': st_model.objects.all(),
-                    }
-            return render(request, 'st/front.html',context1)
+            return redirct('st/front.html')
     else:
         form = st_form()
     
-    context2 = {
+    context = {
             'form': form,
             }
-    return render(request, 'st/add.html', context2)
+    return render(request, 'st/add.html', context)
     
 
 def edit(request, unique_squirrel_id):
-    orginial = st_model.objects.get(unique_squirrel_id = unique_squirrel_id)
+    orginial = st_model.objects.get()
+    
     if request.method == 'POST':
-        form = st_form(request.POST, instance = original)
-        if form.is_valid():
-            form.save()
-            context1 = {
-                    'squirrels': st_model.objects.all(),
-                    }
-            return render(request, 'st/front.html',context1)
+        new = st_form(request.POST, instance = original)
+        if new.is_valid():
+            new.save()
+            return redirect('st/front.html')
     else:
-        form = st_form(instance = original)
-
-    context2 = {
+        form = st_form()
+    context = {
             'form': form,
             }
-    return render(request, 'st/edit.html',context2)
+    return render(request, 'st/info.html',context)
 
 
