@@ -15,7 +15,7 @@ class st_model(models.Model):
 
     unique_squirrel_id = models.CharField(
             max_length=30,
-            help_text=('ID Format: Hectare-Shift-MMDD-Hectare Squirrel Number'),
+            help_text=('(ID Format: Hectare-Shift-MMDD-Hectare Squirrel Number)'),
             )
 
 
@@ -34,7 +34,7 @@ class st_model(models.Model):
 
     date = models.CharField(
             max_length=8,
-            help_text=_('MMDDYYYY'),
+            help_text=_('(Format: MMDDYYYY)'),
         )
 
     Adult = 'Adult'
@@ -85,7 +85,7 @@ class st_model(models.Model):
 
     specific_location = models. CharField(
             max_length=200,
-            help_text=('Anything about the sighting location you would like to specify in 200 characters or less.'),
+            help_text=('(200 characters or less.)'),
             blank=True,
             )
 
@@ -101,7 +101,7 @@ class st_model(models.Model):
 
     other_activities = models.CharField(
             max_length=200,
-            help_text=("Anything about the squirrel's activities you would like to specify in 200 characters or less."),
+            help_text=("(200 characters or less.)"),
             blank=True,
             )
 
