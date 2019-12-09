@@ -12,7 +12,7 @@ def sightings(request):
     context = {
             'squirrels':squirrels
     }
-    return render(request,'st/sightings.html',context)
+    return render(request,'st/front.html',context)
 
 def showstats(request):
     squirrel = st_model.objects.all()
