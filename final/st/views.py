@@ -14,6 +14,7 @@ def sightings(request):
     }
     return render(request,'st/front.html',context)
 
+
 def showstats(request):
     squirrel = st_model.objects.all()
     count_shift = squirrel.values('shift').order_by('shift').annotate(shift_count = Count('shift'))
@@ -34,8 +35,39 @@ def showstats(request):
         }
     return render(request,'st/stats.html',context)
 
+
 def add(request):
-    return True
+    if request.method == 'POST':
+        form = st_form(request.POST)
+        if form.is_valid():
+            new = form.save()
+            print('New sighting is valid and added to our dataset!')
+        else:
+            print('Sighting information inputed is invalid and cannot be added! Please try again!')
+    else:
+        form = st_form()
+    
+    context = {
+            'form': form,
+            }
+    return render(request, 'st/add.html', context)
+    
 
 def edit(request, unique_squirrel_id):
-    return True
+    orginial = st_model.objects.get(unique_squirrel_id = unique_squirrel_id)
+    if request.method == 'POST':
+        form = st_form(request.POST, instance = original)
+        if form.is_valid():
+            form.save()
+            print(f'Updated Information of squirrel {unique_squirrel_id} has been saved!')
+        else:
+            print(f'Sighting information inputed is invalid and cannot be updated! Please try again!')
+    else:
+        form = st_form(instance = original)
+
+    context = {
+            'form': form,
+            }
+    return render(request, 'st/edit.html',context)
+
+
