@@ -9,7 +9,7 @@ class Command(BaseCommand):
         parser.add_argument('path', type=str)
 
     def handle(self,*args, **options): 
-
+        # create a function to verify the boolean input
         def verify(key):
             if key.lower() == 'true':
                 return True
@@ -18,15 +18,21 @@ class Command(BaseCommand):
             else:
                 return 'N/A'
 
-
+        # open the csv given a path in string form
         with open(options['path']) as sd:
             data = csv.reader(sd,delimiter=',')
             next(data,None)
+       
+            # delete existing dataset before importing a new dataset
             st_model.objects.all().delete()
-            for row in data: 
+       
+            for row in data:
+
+                # make sure squirrel ids are indeed unique
                 if st_model.objects.filter(unique_squirrel_id=row[2]).exists():
                     continue
-
+                
+                # import data
                 sm, created = st_model.objects.get_or_create(
                                 latitude_coordinate=row[1],
                                 longitude_coordinate=row[0],

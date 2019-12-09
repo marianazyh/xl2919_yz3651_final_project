@@ -6,7 +6,7 @@ from django.db.models import Count
 from django.contrib import messages
 
 
-
+# A view that lists all squirrel sightings
 def sightings(request):
     squirrels = st_model.objects.all()
     context = {
@@ -14,7 +14,7 @@ def sightings(request):
     }
     return render(request,'st/front.html',context)
 
-
+# A view with general stats about the sightings
 def showstats(request):
     squirrel = st_model.objects.all()
     count_shift = squirrel.values('shift').order_by('shift').annotate(shift_count = Count('shift'))
@@ -36,6 +36,7 @@ def showstats(request):
     return render(request,'st/stats.html',context)
 
 
+# A view to create a new sighting
 def add(request):
     if request.method == 'POST':
         form = st_form(request.POST)
@@ -53,6 +54,7 @@ def add(request):
     return render(request, 'st/add.html', context2)
     
 
+# A view to update a particular sighting
 def edit(request, unique_squirrel_id):
     original = st_model.objects.get(unique_squirrel_id=unique_squirrel_id)
     
