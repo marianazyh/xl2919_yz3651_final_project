@@ -1,9 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>2018 Central Park Squirrel Sightings</title>
 </head>
 <body>
+	<div>
+		<h1>2018 Central Park Squirrel Sightings</h1>
+	</div>
 	
+	<p><a href="/sightings/add/">Add New Sightings</a></p>
+	<p><a href="/sightings/stats/">General Sighting Statistics</a></p>
+	<h3>Existing Squirrels Information with ID </h3>
+	<div>
+		<ul>
+			{% for single_squirrel in squirrels %}
+			<li>
+				{{single_squirrel}}&nbsp;
+				<a href='/sightings/{{single_squirrel.unique_squirrel_id}}/'>View & Update </a>
+			</li>
+			{% endfor %} 
+		</ul>
+	</div>
 </body>
 </html>

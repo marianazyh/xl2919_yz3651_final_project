@@ -13,7 +13,10 @@ def sightings(request):
             'squirrels':squirrels
     }
     return render(request,'st/front.html',context)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 86b36094d3d5340f209d7a520220a114e1963369
 
 def showstats(request):
     squirrel = st_model.objects.all()
