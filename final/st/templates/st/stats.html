@@ -1,49 +1,34 @@
-<h1>General Sighting Statistics</h1>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>General Sighting Statistics</title>
+	</head>
 
+	<body>
+			<h1>General Sighting Statistics</h1>
 
-<h3>Attribute 1: Shift</h3>
-<p>
-{% for key in count_am %}
-Frequency for sighting session in the morning(AM): {{ key.am_count }} <br>
-	{% endfor %}
+			<h3>Attribute 1: Shift</h3>
+			{% for key in count_shift %}
+			Number of squirrels sighted during {{key.shift}}: {{ key.shift_count }} <br>
+			{% endfor %}
 
-{% for key in count_pm %}
-Frequency for sighting session in the afternoon(PM):  {{ key.pm_count }} <br>
-{%endfor%}
-</p>
+			<h3>Attribute 2: Age</h3>
+			Number of Adult squirrels: {{ count_adult }} <br>
+			Number of Juvenile squirrels: {{count_juvenile}}
 
-<h3>Attribute 2: Age</h3>
-<p>
-{% for key in count_adult %}
-The number of ADULT squirrels: {{ key.adult_count }} <br>
-	{% endfor %}
-	
-{% for key in count_pm %}
-The number of JUVENILE squirrels: {{ key.juvenile_count }}<br>
-	{% endfor %}
-</p>
+			<h3>Attribute 3: Location</h3>
+                        Number of squirrels sighted Above Ground: {{ count_above }} <br>
+                        Number of squirrels sighted on Ground Plane: {{count_plane}}
 
-<h3>Attribute 3: Location</h3>
-<p>
-{% for key in count_above %}
-The number of squirrels sighted-Above Ground: {{ key.above_count }} <br>
-	{% endfor %}
+			<h3>Attribute 4: Running </h3>
+			{% for key in count_running %}
+			Number of squirrels sighted RUNNING: {{ key.count_running }} 
+			{% endfor %}
 
-{% for key in count_plane %}
-The number of squirrels sighted-Ground Plane: {{ key.plane_count }} <br>
-	{% endfor %}
-</p>
+			<h3>Attribute 5: Eating </h3>
+			{% for key in count_eating %}
+			Number of squirrels sighted EATING: {{ key.count_eating }} 
+			{% endfor %}
 
-<h3>Attribute 4: Running </h3>
-<p>
-{% for key in count_running %}
-	The number of squirrels seen RUNNING: {{ key.count_running }} 
-{% endfor %}
-</p>
-
-<h3>Attribute 5: Eating </h3>
-<p>
-{% for key in count_eating %}
-	The number of squirrels seen EATING: {{ key.count_eating }} 
-	{% endfor %}
-</p>
+	</body>
+</html>

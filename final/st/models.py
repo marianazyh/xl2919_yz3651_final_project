@@ -46,7 +46,7 @@ class st_model(models.Model):
             )
 
     age = models.CharField(
-            max_length=10,
+            max_length=30,
             choices=age_choices,
             blank=True,
             )
