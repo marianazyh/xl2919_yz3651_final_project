@@ -3,29 +3,32 @@
 	<head>
 		<title>General Sighting Statistics</title>
 	</head>
-
-	<body>
+<body background ="https://img2.goodfon.com/wallpaper/nbig/0/1e/art-detskaya-belochka-pirozhnoe.jpg">
 			<h1>General Sighting Statistics</h1>
 
-			<h3>Attribute 1: Shift</h3>
+			<h3><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzEeMNjOQwfj517Fm3K8Bs0cgKtnZS61ayOMnKoJhEVFfHxP6gxQ&s" width="50" height="50">Attribute 1: Shift</h3>
 			{% for key in count_shift %}
 			Number of squirrels sighted during {{key.shift}}: {{ key.shift_count }} <br>
 			{% endfor %}
 
-			<h3>Attribute 2: Age</h3>
+			<h3><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzEeMNjOQwfj517Fm3K8Bs0cgKtnZS61ayOMnKoJhEVFfHxP6g
+xQ&s" width="50" height="50">Attribute 2: Age</h3>
 			Number of Adult squirrels: {{ count_adult }} <br>
 			Number of Juvenile squirrels: {{count_juvenile}}
 
-			<h3>Attribute 3: Location</h3>
+			<h3><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzEeMNjOQwfj517Fm3K8Bs0cgKtnZS61ayOMnKoJhEVFfHxP6g
+xQ&s" width="50" height="50">Attribute 3: Location</h3>
                         Number of squirrels sighted Above Ground: {{ count_above }} <br>
                         Number of squirrels sighted on Ground Plane: {{count_plane}}
 
-			<h3>Attribute 4: Running </h3>
+			<h3><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzEeMNjOQwfj517Fm3K8Bs0cgKtnZS61ayOMnKoJhEVFfHxP6g
+xQ&s" width="50" height="50">Attribute 4: Running </h3>
 			{% for key in count_running %}
 			Number of squirrels sighted RUNNING: {{ key.count_running }} 
 			{% endfor %}
 
-			<h3>Attribute 5: Eating </h3>
+			<h3><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzEeMNjOQwfj517Fm3K8Bs0cgKtnZS61ayOMnKoJhEVFfHxP6g
+xQ&s" width="50" height="50">Attribute 5: Eating </h3>
 			{% for key in count_eating %}
 			Number of squirrels sighted EATING: {{ key.count_eating }} 
 			{% endfor %}
