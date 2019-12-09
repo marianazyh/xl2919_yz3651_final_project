@@ -29,6 +29,8 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 
 
 
-## Link to directly view squirrel sightings
-- [Link1](https://skilled-axis-255500.appspot.com/sightings)
-- [Link2](https://final-project-261303.appspot.com/sightings)
+## Links to different views
+- [To view map](https://skilled-axis-255500.appspot.com/map)
+- [To view all squirrel sightings](https://skilled-axis-255500.appspot.com/sightings)(can view and update here)
+- [To add a new squirrel sighting](https://skilled-axis-255500.appspot.com/sightings/add)
+- [To view general sightings statistics](https://skilled-axis-255500.appspot.com/sightings/stats)
