@@ -44,7 +44,7 @@ def add(request):
             context = {
                     'form':form,
                     }
-            return render(request,'st/front.html',context)
+            return redirect('/sightings')
     else:
         form = st_form() 
     context2 = {
@@ -63,7 +63,7 @@ def edit(request, unique_squirrel_id):
             context = {
                     'new':new,
                     }
-            return render(request,'st/front.html',context)
+            return redirect('/sightings')
     else:
         form = st_form(instance = original)
     context2 = {
