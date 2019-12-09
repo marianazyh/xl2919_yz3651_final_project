@@ -1,1 +1,27 @@
-<>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View and Update Squirrel Sighting</title>
+</head>
+<body>
+	<h2>View and Update {{ sightings.unique_squirrel_id }}  Squirrel Sighting</title>
+
+<form action="" method="post">
+  {% csrf_token %}
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <table>
+  {{ form.as_p }}
+
+  <input type="submit" value="Submit">
+  </form>
+
+
+
+</body>
+</html>
