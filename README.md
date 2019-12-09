@@ -31,7 +31,8 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 - UNIs: [xl2919, yz3651]
 
 
-## Links to different views
+## Links 
+- Deployed Link: https://skilled-axis-255500.appspot.com
 - [To view map](https://skilled-axis-255500.appspot.com/map)
 - [To view all squirrel sightings](https://skilled-axis-255500.appspot.com/sightings)(can view and update here)
 - [To add a new squirrel sighting](https://skilled-axis-255500.appspot.com/sightings/add)
