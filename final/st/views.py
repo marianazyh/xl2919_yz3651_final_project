@@ -40,17 +40,18 @@ def add(request):
     if request.method == 'POST':
         form = st_form(request.POST)
         if form.is_valid():
-            new = form.save()
-            print('New sighting is valid and added to our dataset!')
-        else:
-            print('Sighting information inputed is invalid and cannot be added! Please try again!')
+            form.save()
+            context1 = {
+                    'squirrels': st_model.objects.all(),
+                    }
+            return render(request, 'st/front.html',context1)
     else:
         form = st_form()
     
-    context = {
+    context2 = {
             'form': form,
             }
-    return render(request, 'st/add.html', context)
+    return render(request, 'st/add.html', context2)
     
 
 def edit(request, unique_squirrel_id):
@@ -59,15 +60,16 @@ def edit(request, unique_squirrel_id):
         form = st_form(request.POST, instance = original)
         if form.is_valid():
             form.save()
-            print(f'Updated Information of squirrel {unique_squirrel_id} has been saved!')
-        else:
-            print(f'Sighting information inputed is invalid and cannot be updated! Please try again!')
+            context1 = {
+                    'squirrels': st_model.objects.all(),
+                    }
+            return render(request, 'st/front.html',context1)
     else:
         form = st_form(instance = original)
 
-    context = {
+    context2 = {
             'form': form,
             }
-    return render(request, 'st/edit.html',context)
+    return render(request, 'st/edit.html',context2)
 
 
