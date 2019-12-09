@@ -29,6 +29,6 @@ $ python manage.py export_squirrel_data /path/to/file.csv
 
 
 
-## Link to the server running your application(directly view squirrel sightings)
+## Link to directly view squirrel sightings
 - [Link1](https://skilled-axis-255500.appspot.com/sightings)
 - [Link2](https://final-project-261303.appspot.com/sightings)
