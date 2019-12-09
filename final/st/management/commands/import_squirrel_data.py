@@ -23,34 +23,34 @@ class Command(BaseCommand):
             data = csv.DictReader(sd)
             next(data)
             st_model.objects.all().delete()
-            for row in data:
-                
-                sm = st_model()
-                
-                sm.latitude_coordinate=row['Y']
-                sm.longitude_coordinate=row['X']
-                sm.unique_squirrel_id=row['Unique Squirrel ID']
-                sm.shift=row['Shift']
-                sm.date=row['Date']
-                sm.age=row['Age']
-                sm.primary_fur_color=row['Primary Fur Color']
-                sm.location=row['Location']
-                sm.specific_location=row['Specific Location']
-                sm.running=verify(row['Running'])
-                sm.chasing=verify(row['Chasing'])
-                sm.climbing=verify(row['Climbing'])
-                sm.eating=verify(row['Eating'])
-                sm.foraging=verify(row['Foraging'])
-                sm.other_activities=row['Other Activities']
-                sm.kuks=verify(row['Kuks'])
-                sm.quaas=verify(row['Quaas'])
-                sm.moans=verify(row['Moans'])
-                sm.tail_flags=verify(row['Tail flags'])
-                sm.tail_twitches=verify(row['Tail twitches'])
-                sm.approaches=verify(row['Approaches'])
-                sm.indifferent=verify(row['Indifferent'])
-                sm.runs_from=verify(row['Runs from'])
-                
-                sm.save()
+            for row in data: 
+                sm. created = st_model.objects.get_or_create(
+                                latitude_coordinate=row['Y'],
+                                longitude_coordinate=row['X'],
+                                unique_squirrel_id=row['Unique Squirrel ID'],
+                                shift=row['Shift'],
+                                date=row['Date'],
+                                age=row['Age'],
+                                primary_fur_color=row['Primary Fur Color'],
+                                location=row['Location'],
+                                specific_location=row['Specific Location'],
+                                running=verify(row['Running']),
+                                chasing=verify(row['Chasing']),
+                                climbing=verify(row['Climbing']),
+                                eating=verify(row['Eating']),
+                                foraging=verify(row['Foraging']),
+                                other_activities=row['Other Activities'],
+                                kuks=verify(row['Kuks']),
+                                quaas=verify(row['Quaas']),
+                                moans=verify(row['Moans']),
+                                tail_flags=verify(row['Tail flags']),
+                                tail_twitches=verify(row['Tail twitches']),
+                                approaches=verify(row['Approaches']),
+                                indifferent=verify(row['Indifferent']),
+                                runs_from=verify(row['Runs from']),
+                                )
+                if created:
+                    sm.save()
+
 
 
