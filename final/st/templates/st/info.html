@@ -14,21 +14,12 @@ input[type=submit]{
 }
 </style>
 </head>
-<body>
-	<h2>View and Update {{ sightings.unique_squirrel_id }}  Squirrel Sighting</title>
+<body
+	<h1>View and Update {{ sightings.unique_squirrel_id }}  Squirrel Sighting</h1>
 
 <form action="" method="post">
   {% csrf_token %}
-  {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li class="{{ message.tags }}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-  <table>
   {{ form.as_p }}
-
   <input type="submit" value="Submit">
   </form>
 

@@ -46,8 +46,7 @@ def add(request):
                     }
             return render(request,'st/front.html',context)
     else:
-        form = st_form()
-    
+        form = st_form() 
     context2 = {
             'form': form,
             }
