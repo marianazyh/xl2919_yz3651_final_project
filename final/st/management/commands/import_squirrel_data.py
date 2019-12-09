@@ -24,7 +24,7 @@ class Command(BaseCommand):
             next(data)
             st_model.objects.all().delete()
             for row in data: 
-                sm. created = st_model.objects.get_or_create(
+                sm, created = st_model.objects.get_or_create(
                                 latitude_coordinate=row['Y'],
                                 longitude_coordinate=row['X'],
                                 unique_squirrel_id=row['Unique Squirrel ID'],
